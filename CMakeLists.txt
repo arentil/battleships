@@ -24,9 +24,12 @@ endif ()
 #              Battleships
 # ------------------------------------------
 set(BATTLESHIPS_CLIENT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/battleships_client/src)
-set(BATTLESHIPS_CLIENT_SOURCE_FILES ${BATTLESHIPS_CLIENT_SOURCE_DIR}/main.cpp)
+set(BATTLESHIPS_CLIENT_SOURCE_FILES ${BATTLESHIPS_CLIENT_SOURCE_DIR}/main.cpp
+                                    ${BATTLESHIPS_CLIENT_SOURCE_DIR}/mainwindow.h 
+                                    ${BATTLESHIPS_CLIENT_SOURCE_DIR}/mainwindow.cpp 
+                                    ${BATTLESHIPS_CLIENT_SOURCE_DIR}/mainwindow.ui
+)
 
-qt_add_executable(battleships_client ${BATTLESHIPS_CLIENT_SOURCE_FILES}
-  battleships_client/src/mainwindow.h battleships_client/src/mainwindow.cpp battleships_client/src/mainwindow.ui)
+qt_add_executable(battleships_client ${BATTLESHIPS_CLIENT_SOURCE_FILES})
 target_link_libraries(battleships_client PRIVATE Qt6::Widgets Qt6::Gui Qt6::Core Qt6::Network Qt6::WebSockets Qt::Concurrent)
 # ===============================================================
