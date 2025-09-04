@@ -6,29 +6,107 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>773</width>
-    <height>526</height>
+    <width>1234</width>
+    <height>708</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>773</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuMainWindow">
-    <property name="title">
-     <string>MainWindow</string>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>400</width>
+      <height>400</height>
+     </rect>
+    </property>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>true</bool>
+    </attribute>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <column>
+     <property name="text">
+      <string>A</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>B</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>C</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>D</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>E</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>F</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>G</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>H</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>I</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>J</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>10</y>
+      <width>400</width>
+      <height>400</height>
+     </rect>
     </property>
    </widget>
-   <addaction name="menuMainWindow"/>
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>420</y>
+      <width>811</width>
+      <height>241</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

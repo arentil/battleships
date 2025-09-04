@@ -11,7 +11,7 @@ AllowShortLoopsOnASingleLine: false
 AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
 BreakBeforeBraces: Allman
-# BraceWrapping:
+BraceWrapping:
 #   AfterClass:      true
 #   AfterControlStatement: true
 #   AfterEnum:       true
@@ -26,8 +26,10 @@ BreakBeforeBraces: Allman
 #   SplitEmptyFunction: false
 #   SplitEmptyRecord: false
 #   SplitEmptyNamespace: false
-#   BeforeLambdaBody: false
-ColumnLimit: 100
+  AllowShortLambdasOnASingleLine: Inline
+  LambdaBodyIndentation: Signature
+  BeforeLambdaBody: true
+ColumnLimit: 120
 ContinuationIndentWidth: 2
 IndentWidth: 4
 Cpp11BracedListStyle: true
@@ -39,7 +41,7 @@ PenaltyExcessCharacter: 100
 PenaltyReturnTypeOnItsOwnLine: 1
 PointerAlignment: Left
 SortIncludes: true
-SpaceBeforeParens: Never
+SpaceBeforeParens: ControlStatements
 SpacesInContainerLiterals: false
 Standard:        c++20
 FixNamespaceComments: true
