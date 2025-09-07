@@ -1,10 +1,5 @@
 #pragma once
 
-#include <functional>
-#include <mutex>
-#include <queue>
-#include <vector>
-
 namespace util
 {
 class thread_pool

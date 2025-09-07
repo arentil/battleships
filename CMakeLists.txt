@@ -49,8 +49,12 @@ target_link_libraries(battleships_client PRIVATE Qt6::Widgets Qt6::Gui Qt6::Core
 set(BATTLESHIPS_SERVER_SOURCE_DIR ${CMAKE_SOURCE_DIR}/battleships_server/src)
 set(BATTLESHIPS_SERVER_SOURCE_FILES 
   ${BATTLESHIPS_SERVER_SOURCE_DIR}/main.cpp
+  ${BATTLESHIPS_SERVER_SOURCE_DIR}/game/board.h
   ${BATTLESHIPS_SERVER_SOURCE_DIR}/game/game_hub.h
   ${BATTLESHIPS_SERVER_SOURCE_DIR}/game/game.h
+  ${BATTLESHIPS_SERVER_SOURCE_DIR}/game/match.h
+  ${BATTLESHIPS_SERVER_SOURCE_DIR}/game/message.h
+  ${BATTLESHIPS_SERVER_SOURCE_DIR}/game/lobby.h
   ${BATTLESHIPS_SERVER_SOURCE_DIR}/net/websocket_server.h
   ${BATTLESHIPS_SERVER_SOURCE_DIR}/net/publisher.h
   ${BATTLESHIPS_SERVER_SOURCE_DIR}/net/connection.h
@@ -62,6 +66,7 @@ set(BATTLESHIPS_SERVER_SOURCE_FILES
 include_directories(${BATTLESHIPS_SERVER_SOURCE_DIR})
 add_executable(battleships_server ${BATTLESHIPS_SERVER_SOURCE_FILES})
 target_link_libraries(battleships_server PRIVATE uWebSockets)
+target_precompile_headers(battleships_server PUBLIC ${BATTLESHIPS_SERVER_SOURCE_DIR}/stdafx.h)
 
 if (MSVC)
   # Copy generated ZLIB library into project output directory()

@@ -4,9 +4,6 @@
 #include <net/websocket_server.h>
 #include <util/thread_pool.h>
 
-#include <algorithm>
-#include <thread>
-
 int main()
 {
     const size_t t_pool_size{std::min(4ull, std::thread::hardware_concurrency() - 1ull)};

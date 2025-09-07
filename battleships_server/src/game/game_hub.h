@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-
 #include <game/game.h>
 #include <net/connection.h>
 #include <net/publisher.h>

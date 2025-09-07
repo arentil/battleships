@@ -1,7 +1,6 @@
 #pragma once
 
-#include <algorithm>
-#include <string>
+
 
 namespace game
 {
@@ -10,7 +9,7 @@ enum class message_type
     unsupported,
     session, // eg.: LOGIN, LOGOUT, ERROR
     matchmaking, // eg.: SEARCH_GAME, MATCH_FOUND, LEAVE_ROOM, READY
-    match, // eg.: FIRE, FIRE_RESULT, YOUR_TURN, OPPONENT_TURN, GAME_OVER
+    game, // eg.: FIRE, FIRE_RESULT, YOUR_TURN, OPPONENT_TURN, GAME_OVER
     chat // eg.: CHAT
 };
 

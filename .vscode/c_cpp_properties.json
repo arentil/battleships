@@ -14,7 +14,8 @@
             "compilerPath": "cl.exe",
             "cStandard": "c23",
             "cppStandard": "c++23",
-            "intelliSenseMode": "windows-msvc-x64"
+            "intelliSenseMode": "windows-msvc-x64",
+            "forcedInclude": ["${workspaceFolder}/battleships_server/src/stdafx.h"]
         }
     ],
     "version": 4

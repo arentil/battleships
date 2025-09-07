@@ -3,8 +3,6 @@
 #include "App.h" // uwebsockets
 #include <net/connection.h>
 
-#include <functional>
-
 namespace net
 {
 class websocket_server
@@ -39,7 +37,7 @@ public:
             "/*",
             {.compression = uWS::CompressOptions(uWS::DEDICATED_COMPRESSOR | uWS::DEDICATED_DECOMPRESSOR),
              .maxPayloadLength = 100 * 1024 * 1024,
-             .idleTimeout = 120, // time in seconds until connection is closed
+             .idleTimeout = 15, // time in seconds until connection is closed
              .maxBackpressure = 100 * 1024 * 1024,
              .closeOnBackpressureLimit = false,
              .resetIdleTimeoutOnSend = true,
@@ -49,10 +47,9 @@ public:
              .message = [this](connection* ws, std::string_view message, uWS::OpCode opCode)
              { on_message_(ws, message, opCode); },
              .dropped =
-               [](auto* ws, std::string_view /*message*/, uWS::OpCode /*opCode*/)
+               [](auto* ws, std::string_view message, uWS::OpCode /*opCode*/)
              {
-                 /* A message was dropped due to set maxBackpressure and closeOnBackpressureLimit
-                  * limit */
+                 std::cout << "Message dropped. " << message << std::endl;
              },
              .drain =
                [](auto* /*ws*/)
@@ -60,13 +57,15 @@ public:
                  /* Check ws->getBufferedAmount() here */
              },
              .ping =
-               [](auto* /*ws*/, std::string_view)
+               [](connection* ws, std::string_view)
              {
+                std::cout << "ping" << std::endl; // to: " << ws->getUserData()->id() << std::endl;
                  /* Not implemented yet */
              },
              .pong =
-               [](auto* /*ws*/, std::string_view)
+               [](connection* ws, std::string_view)
              {
+                std::cout << "pong" << std::endl; // from: " << ws->getUserData()->id() << std::endl;
                  /* Not implemented yet */
              },
              .close =
@@ -74,7 +73,6 @@ public:
              {
                  on_close_(ws, message);
                  /* You may access ws->getUserData() here */
-                 // unsubscribe socket from room?
              }})
           .listen(port_,
                   [this](auto* listen_socket)
