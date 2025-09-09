@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.22)
 
-project(battleships VERSION 0.0.1 LANGUAGES CXX)
+project(battleships VERSION 0.0.1 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_C_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if (MSVC)
@@ -33,8 +34,8 @@ qt_standard_project_setup()
 # ------------------------------------------
 set(BATTLESHIPS_CLIENT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/battleships_client/src)
 set(BATTLESHIPS_CLIENT_SOURCE_FILES ${BATTLESHIPS_CLIENT_SOURCE_DIR}/main.cpp
-                                    ${BATTLESHIPS_CLIENT_SOURCE_DIR}/mainwindow.h 
-                                    ${BATTLESHIPS_CLIENT_SOURCE_DIR}/mainwindow.cpp 
+                                    ${BATTLESHIPS_CLIENT_SOURCE_DIR}/mainwindow.h
+                                    ${BATTLESHIPS_CLIENT_SOURCE_DIR}/mainwindow.cpp
                                     ${BATTLESHIPS_CLIENT_SOURCE_DIR}/mainwindow.ui
 )
 
@@ -47,7 +48,7 @@ target_link_libraries(battleships_client PRIVATE Qt6::Widgets Qt6::Gui Qt6::Core
 #              Battleships Server
 # ------------------------------------------
 set(BATTLESHIPS_SERVER_SOURCE_DIR ${CMAKE_SOURCE_DIR}/battleships_server/src)
-set(BATTLESHIPS_SERVER_SOURCE_FILES 
+set(BATTLESHIPS_SERVER_SOURCE_FILES
   ${BATTLESHIPS_SERVER_SOURCE_DIR}/main.cpp
   ${BATTLESHIPS_SERVER_SOURCE_DIR}/game/board.h
   ${BATTLESHIPS_SERVER_SOURCE_DIR}/game/game_hub.h
@@ -70,9 +71,9 @@ target_precompile_headers(battleships_server PUBLIC ${BATTLESHIPS_SERVER_SOURCE_
 
 if (MSVC)
   # Copy generated ZLIB library into project output directory()
-  add_custom_command(TARGET battleships_server 
-                    POST_BUILD COMMAND ${CMAKE_COMMAND} -E 
-                    copy "${zlib_BINARY_DIR}/${CMAKE_BUILD_TYPE}/zlibd.dll" 
+  add_custom_command(TARGET battleships_server
+                    POST_BUILD COMMAND ${CMAKE_COMMAND} -E
+                    copy "${zlib_BINARY_DIR}/${CMAKE_BUILD_TYPE}/zlibd.dll"
                           "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_BUILD_TYPE}"
                     COMMENT "Copying ZLIB library into build folder")
 endif()

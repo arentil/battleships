@@ -37,7 +37,7 @@ public:
             "/*",
             {.compression = uWS::CompressOptions(uWS::DEDICATED_COMPRESSOR | uWS::DEDICATED_DECOMPRESSOR),
              .maxPayloadLength = 100 * 1024 * 1024,
-             .idleTimeout = 15, // time in seconds until connection is closed
+             .idleTimeout = 120, // time in seconds until connection is closed
              .maxBackpressure = 100 * 1024 * 1024,
              .closeOnBackpressureLimit = false,
              .resetIdleTimeoutOnSend = true,
@@ -59,13 +59,11 @@ public:
              .ping =
                [](connection* ws, std::string_view)
              {
-                std::cout << "ping" << std::endl; // to: " << ws->getUserData()->id() << std::endl;
                  /* Not implemented yet */
              },
              .pong =
                [](connection* ws, std::string_view)
              {
-                std::cout << "pong" << std::endl; // from: " << ws->getUserData()->id() << std::endl;
                  /* Not implemented yet */
              },
              .close =
